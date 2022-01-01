@@ -1,0 +1,15 @@
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.exe.config
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.exe
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.pdb
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.csproj.AssemblyReference.cache
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.Properties.Resources.resources
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.csproj.GenerateResource.cache
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.csproj.CoreCompileInputs.cache
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.exe
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.pdb
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\bin\Debug\EntityFramework.dll
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\bin\Debug\EntityFramework.xml
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.csproj.CopyComplete
+C:\Users\chung\Documents\VisualStudio\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.LoginForm.resources
