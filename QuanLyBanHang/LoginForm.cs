@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyBanHang.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +20,16 @@ namespace QuanLyBanHang
 
 		private void LoginForm_Load(object sender, EventArgs e)
 		{
-			var emp = new[] { 
-			new {Salary=10},new {Salary=20},new {Salary=5},new {Salary=30}
-			};
-			chart1.DataSource = emp;
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			new InvoiceListForm().Show();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			new ReportForm().Show();
 		}
 	}
 }
