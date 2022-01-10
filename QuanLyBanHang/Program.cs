@@ -17,7 +17,11 @@ namespace QuanLyBanHang
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new StartForm());
+			var login = new StartForm();
+			if(login.ShowDialog() == DialogResult.OK)
+            {
+				Application.Run(new LoginForm());
+			}
 		}
 	}
 }

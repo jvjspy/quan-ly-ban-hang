@@ -344,6 +344,7 @@
             // 
             // dgv
             // 
+            this.dgv.AllowUserToAddRows = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,

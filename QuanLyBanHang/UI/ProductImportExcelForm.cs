@@ -42,7 +42,7 @@ namespace QuanLyBanHang.UI
                 for (int i = 3; i <= rowCount; i++)
                 {
                     Product product = new Product();
-                    product.Category = new Category();
+                    Category ca = categoryDAO.GetCategoriesByName(xlRange.Cells[i, 2].Value2);
                     if (xlRange.Cells[i, 1] != null && xlRange.Cells[i, 1].Value2 != null)
                     {
                         product.Id = (long)xlRange.Cells[i, 1].Value2;
@@ -51,7 +51,8 @@ namespace QuanLyBanHang.UI
                     {
                         product.Id = 0;
                     }
-                    product.Category.Name = (xlRange.Cells[i, 2].Value2);
+                    product.Category = ca;
+                    product.CatId = ca.Id;
                     product.Name = xlRange.Cells[i, 3].Value2.ToString();
                     product.Unit = xlRange.Cells[i, 4].Value2.ToString();
                     product.SellPrice = (int)xlRange.Cells[i, 5].Value2;
@@ -110,21 +111,28 @@ namespace QuanLyBanHang.UI
         {
             try
             {
-                List<Product> ls = dgv.DataSource as List<Product>;
+                List<Product> ls = (dgv.DataSource as BindingList<Product>).ToList();
+                Cursor.Current = Cursors.WaitCursor;
                 productDAO.SaveUpload(ls);
-                this.Close();
-                MessageBox.Show("Nhập file thành công hãy làm mới lại để xem thông tin","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                Cursor.Current = Cursors.Default;
+                var dr =  MessageBox.Show("Nhập file thành công! \nBạn có muốn trở lại màn hình quản lý sản phẩm","Thông báo",MessageBoxButtons.OKCancel);
+                if(dr == DialogResult.OK)
+                {
+                    new ProductForm().Show();
+                    this.Close();
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("Có lỗi trong quá trình lưu file", "Thông báo");
-                throw;
+                
             }
             
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+            new ProductForm().Show();
             this.Close();
         }
 

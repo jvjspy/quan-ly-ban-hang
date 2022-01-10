@@ -1,6 +1,7 @@
 ﻿using QuanLyBanHang.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,27 +45,29 @@ namespace QuanLyBanHang.DAO
 		}
 		public List<Product> GetListProduct(Product fill)
         {
-            List<Product> list = new List<Product>();
 			if (fill == null)
 			{
-				list = db.Products
-				.ToList();
+				var list = from p in db.Products
+						   select p;
+				return list.ToList();
 			}
 			else
 			{
-				list = db.Products.Where(i => i.Name.Contains(fill.Name) &&
-				(fill.Amount >= i.Amount || fill.Amount ==-1) && (fill.CatId == i.CatId || fill.CatId == -1)
-				).ToList();
+				var list = from p in db.Products
+						   where p.Name.Contains(fill.Name) &&
+							(fill.Amount >= p.Amount || fill.Amount == -1) &&
+							(fill.CatId == p.CatId || fill.CatId == -1)
+						   select p;
+				return list.ToList();
 			}
-		
-			return list;
         }
 		public void SaveUpload(List<Product> ls)
-        {
+		{ 
             foreach (var item in ls)
             {
 				if(item.Id == 0)
                 {
+					item.Category = null;
 					db.Products.Add(item);
                 }
                 else
@@ -72,11 +75,11 @@ namespace QuanLyBanHang.DAO
 					Product product = db.Products.FirstOrDefault(i => i.Id == item.Id);
 					product.Name = item.Name;
 					product.Description = item.Description;
-					product.CatId = categoryDAO.GetCategoriesByName(item.Category.Name).Id;
+					product.CatId = item.CatId;
 					product.BuyPrice = item.BuyPrice;
 					product.SellPrice = item.SellPrice;
 					product.Amount += item.Amount;
-					if (item.Image == "")
+					if (item.Image != "")
 					{
 						product.Image = item.Image;
 					}

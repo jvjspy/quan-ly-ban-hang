@@ -50,7 +50,7 @@
             // 
             // btnDel
             // 
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Image = global::QuanLyBanHang.Properties.Resources.close;
             this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDel.Location = new System.Drawing.Point(636, 428);
             this.btnDel.Margin = new System.Windows.Forms.Padding(2);

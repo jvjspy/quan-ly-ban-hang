@@ -47,7 +47,9 @@ namespace QuanLyBanHang
             error.Clear();
             if (txtName.Text != "")
             {
+                Cursor.Current = Cursors.WaitCursor;
                 var user = adminDAO.GetAdmin(txtName.Text);
+                Cursor.Current = Cursors.Default;
                 if (user == null)
                 {
                     error.SetError(txtName, "Tài khoản không tồn tại!");
@@ -58,13 +60,15 @@ namespace QuanLyBanHang
                 }
                 else
                 {
-                    new LoginForm().ShowDialog();
+                    this.DialogResult = DialogResult.OK;
                 }
+                
             }
             else
             {
                 error.SetError(txtName, "Tên tài khoản không được để trống!");
             }
+            
         }
     }
 }

@@ -18,6 +18,7 @@ namespace QuanLyBanHang.UI
     {
         private ProductDAO productDAO = new ProductDAO();
         private CategoryDAO categoryDAO = new CategoryDAO();
+        BindingList<Product> sr = null;
         public ProductForm()
         {
             InitializeComponent();
@@ -123,7 +124,10 @@ namespace QuanLyBanHang.UI
 
         private void LoadData(Product fill)
         {
-            dgv.DataSource = productDAO.GetListProduct(fill);
+            
+            sr = new BindingList<Product>(productDAO.GetListProduct(fill));
+            dgv.DataSource = sr;
+            
         }
 
         private void selectChange(object sender, EventArgs e)
@@ -265,7 +269,8 @@ namespace QuanLyBanHang.UI
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            new ProductImportExcelForm().ShowDialog();
+            new ProductImportExcelForm().Show();
+            this.Close();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
