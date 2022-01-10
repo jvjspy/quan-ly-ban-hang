@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyBanHang.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,11 @@ namespace QuanLyBanHang
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new LoginForm());
+			var login = new StartForm();
+			if(login.ShowDialog() == DialogResult.OK)
+            {
+				Application.Run(new LoginForm());
+			}
 		}
 	}
 }
