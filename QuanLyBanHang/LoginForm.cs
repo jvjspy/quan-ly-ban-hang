@@ -41,5 +41,15 @@ namespace QuanLyBanHang
         {
 			new ProductForm().Show();
 		}
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+			new ProviderForm().Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+			Close();
+        }
     }
 }
