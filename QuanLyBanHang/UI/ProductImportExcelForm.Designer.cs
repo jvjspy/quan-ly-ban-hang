@@ -146,7 +146,6 @@
             this.CatId.DataPropertyName = "Category";
             this.CatId.HeaderText = "Loại mặt hàng";
             this.CatId.Name = "CatId";
-            this.CatId.Width = 50;
             // 
             // NameP
             // 

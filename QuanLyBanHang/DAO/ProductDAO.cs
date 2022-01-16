@@ -49,6 +49,7 @@ namespace QuanLyBanHang.DAO
 			{
 				var list = from p in db.Products
 						   select p;
+
 				return list.ToList();
 			}
 			else

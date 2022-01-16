@@ -178,7 +178,6 @@ namespace QuanLyBanHang.UI
 
         private void cell_Double_To_Del(object sender, DataGridViewCellEventArgs e)
         {
-            
             DialogResult rs = MessageBox.Show("Bạn có chắc muốn xóa sản phẩm " + dgv.Rows[e.RowIndex].Cells["NameP"].Value.ToString(), "Thông báo", MessageBoxButtons.OKCancel);
             if(rs == DialogResult.OK)
             {

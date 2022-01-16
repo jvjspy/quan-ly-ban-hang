@@ -131,6 +131,7 @@ namespace QuanLyBanHang.UI
 
         private void selectChange(object sender, EventArgs e)
         {
+
             var drr = dgv.CurrentRow;
             txtImg.Text = drr.Cells["Img"].Value.ToString();
             txt_amount.Text = drr.Cells["Amount"].Value.ToString();

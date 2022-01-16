@@ -157,7 +157,7 @@
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(149, 30);
             this.btnDel.TabIndex = 12;
-            this.btnDel.Text = "Xóa";
+            this.btnDel.Text = "Xóa ";
             this.btnDel.UseVisualStyleBackColor = true;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
