@@ -29,6 +29,9 @@ namespace QuanLyBanHang.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNgayTao = new System.Windows.Forms.DateTimePicker();
@@ -42,6 +45,7 @@ namespace QuanLyBanHang.UI
             this.label4 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.cbxProduct = new System.Windows.Forms.ComboBox();
             this.btn_xoa = new System.Windows.Forms.Button();
             this.txtDonGia = new System.Windows.Forms.TextBox();
@@ -55,9 +59,11 @@ namespace QuanLyBanHang.UI
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +95,8 @@ namespace QuanLyBanHang.UI
             // 
             // txtNgayTao
             // 
-            this.txtNgayTao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtNgayTao.CustomFormat = "dd/MM/yyyy";
+            this.txtNgayTao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtNgayTao.Location = new System.Drawing.Point(102, 57);
             this.txtNgayTao.Name = "txtNgayTao";
             this.txtNgayTao.Size = new System.Drawing.Size(206, 20);
@@ -169,9 +176,11 @@ namespace QuanLyBanHang.UI
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(136, 20);
             this.txtSoLuong.TabIndex = 0;
+            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnRefresh);
             this.groupBox2.Controls.Add(this.cbxProduct);
             this.groupBox2.Controls.Add(this.btn_xoa);
             this.groupBox2.Controls.Add(this.txtDonGia);
@@ -187,6 +196,18 @@ namespace QuanLyBanHang.UI
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhập hàng";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = global::QuanLyBanHang.Properties.Resources.refresh;
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefresh.Location = new System.Drawing.Point(264, 100);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(106, 34);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "Làm mới";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // cbxProduct
             // 
             this.cbxProduct.FormattingEnabled = true;
@@ -197,9 +218,11 @@ namespace QuanLyBanHang.UI
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Location = new System.Drawing.Point(264, 62);
+            this.btn_xoa.Image = global::QuanLyBanHang.Properties.Resources.delete;
+            this.btn_xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_xoa.Location = new System.Drawing.Point(264, 65);
             this.btn_xoa.Name = "btn_xoa";
-            this.btn_xoa.Size = new System.Drawing.Size(75, 23);
+            this.btn_xoa.Size = new System.Drawing.Size(106, 28);
             this.btn_xoa.TabIndex = 6;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
@@ -211,12 +234,15 @@ namespace QuanLyBanHang.UI
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Size = new System.Drawing.Size(136, 20);
             this.txtDonGia.TabIndex = 0;
+            this.txtDonGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // btn_Them
             // 
-            this.btn_Them.Location = new System.Drawing.Point(264, 33);
+            this.btn_Them.Image = global::QuanLyBanHang.Properties.Resources.add;
+            this.btn_Them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Them.Location = new System.Drawing.Point(264, 28);
             this.btn_Them.Name = "btn_Them";
-            this.btn_Them.Size = new System.Drawing.Size(75, 23);
+            this.btn_Them.Size = new System.Drawing.Size(106, 28);
             this.btn_Them.TabIndex = 5;
             this.btn_Them.Text = "Thêm";
             this.btn_Them.UseVisualStyleBackColor = true;
@@ -242,9 +268,11 @@ namespace QuanLyBanHang.UI
             // 
             // btnNhapHang
             // 
-            this.btnNhapHang.Location = new System.Drawing.Point(323, 399);
+            this.btnNhapHang.Image = global::QuanLyBanHang.Properties.Resources.add;
+            this.btnNhapHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNhapHang.Location = new System.Drawing.Point(280, 390);
             this.btnNhapHang.Name = "btnNhapHang";
-            this.btnNhapHang.Size = new System.Drawing.Size(75, 23);
+            this.btnNhapHang.Size = new System.Drawing.Size(118, 32);
             this.btnNhapHang.TabIndex = 3;
             this.btnNhapHang.Text = "Nhập hàng";
             this.btnNhapHang.UseVisualStyleBackColor = true;
@@ -253,23 +281,42 @@ namespace QuanLyBanHang.UI
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Proid,
             this.RecId,
             this.Amount,
             this.Price});
-            this.dataGridView1.Location = new System.Drawing.Point(55, 232);
+            this.dataGridView1.Location = new System.Drawing.Point(45, 228);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(696, 132);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(706, 132);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_click);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // Proid
             // 
             this.Proid.DataPropertyName = "Prodid";
             this.Proid.HeaderText = "Mã sản phẩm";
             this.Proid.Name = "Proid";
+            this.Proid.Width = 120;
             // 
             // RecId
             // 
@@ -277,28 +324,37 @@ namespace QuanLyBanHang.UI
             this.RecId.HeaderText = "Mã biên lai";
             this.RecId.Name = "RecId";
             this.RecId.ReadOnly = true;
+            this.RecId.Width = 150;
             // 
             // Amount
             // 
             this.Amount.DataPropertyName = "Amount";
             this.Amount.HeaderText = "Số lượng";
             this.Amount.Name = "Amount";
+            this.Amount.Width = 200;
             // 
             // Price
             // 
             this.Price.DataPropertyName = "Price";
             this.Price.HeaderText = "Giá nhập hàng";
             this.Price.Name = "Price";
+            this.Price.Width = 200;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(404, 399);
+            this.button1.Image = global::QuanLyBanHang.Properties.Resources.close;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(404, 390);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(98, 32);
             this.button1.TabIndex = 5;
             this.button1.Text = "Đóng";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // error
+            // 
+            this.error.ContainerControl = this;
             // 
             // ProviderImportProductForm
             // 
@@ -320,6 +376,7 @@ namespace QuanLyBanHang.UI
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,10 +405,12 @@ namespace QuanLyBanHang.UI
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.Button btn_xoa;
         private System.Windows.Forms.ComboBox cbxProduct;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proid;
         private System.Windows.Forms.DataGridViewTextBoxColumn RecId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ErrorProvider error;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

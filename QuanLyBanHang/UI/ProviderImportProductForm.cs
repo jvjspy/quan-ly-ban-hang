@@ -43,6 +43,7 @@ namespace QuanLyBanHang.UI
             dataGridView1.DataSource = ReceiptDetail.GetAll(mbl);
             btn_Them.Enabled = false;
             btn_xoa.Enabled = false;
+            btnRefresh.Enabled = false;
             btnNhapHang.Enabled = false;
             
         }
@@ -109,6 +110,7 @@ namespace QuanLyBanHang.UI
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            if (!valid()) return;
             ReceiptDetail add = new ReceiptDetail();
             add.ProdId = (long)cbxProduct.SelectedValue;
             add.Amount = int.Parse(txtSoLuong.Text);
@@ -130,6 +132,63 @@ namespace QuanLyBanHang.UI
             ReciptForm frm = new ReciptForm();
             frm.Show();
             this.Close();
+        }
+
+        private bool valid()
+        {
+            error.Clear();
+            bool val = true;
+            if (String.IsNullOrEmpty(txtDonGia.Text))
+            {
+                error.SetError(txtDonGia, "Đơn giá không được để trống");
+                val = false;
+            }
+            if (String.IsNullOrEmpty(txtSoLuong.Text))
+            {
+                error.SetError(txtSoLuong, "Số lượng không được để trống");
+                val = false;
+            }
+
+            return val;
+        }
+
+        private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtSoLuong.Text = "";
+            txtGhiChu.Text = "";
+            txtDonGia.Text = "";
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var rowIdx = (e.RowIndex + 1).ToString();
+
+            var centerFormat = new StringFormat()
+            {
+                // right alignment might actually make more sense for numbers
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var headerBounds = new System.Drawing.Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
     }
 }

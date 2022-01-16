@@ -90,7 +90,7 @@ namespace QuanLyBanHang.UI
         {
             txtGhiChu.Text = "";
             txtMaBienLai.Text = "";
-            txtNgayTao.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtNgayTao.Value = DateTime.Now; 
             cbxNCC.SelectedIndex = 0;
             loaddata(null);
         }
@@ -107,6 +107,37 @@ namespace QuanLyBanHang.UI
             txtMaBienLai.Text = dr.Cells["RecId"].Value.ToString();
             txtNgayTao.Text = dr.Cells["RecDate"].Value.ToString();
             cbxNCC.SelectedValue = dr.Cells["Provid"].Value;
+        }
+
+        private void txtMaBienLai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var rowIdx = (e.RowIndex + 1).ToString();
+
+            var centerFormat = new StringFormat()
+            {
+                // right alignment might actually make more sense for numbers
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var headerBounds = new System.Drawing.Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
     }
 }
