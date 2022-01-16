@@ -77,13 +77,13 @@ namespace QuanLyBanHang.UI
                 error.SetError(txtEmail, "Email nhà cung cấp không được để trống");
                 val = false;
             }
-            
+
             if (!IsValidEmail(txtEmail.Text.ToString()))
             {
                 error.SetError(txtEmail, "Email không đúng định dạng");
                 val = false;
             }
-            
+
             return val;
         }
         public static bool IsValidEmail(string email)
@@ -96,7 +96,7 @@ namespace QuanLyBanHang.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!valid()) return;
-            
+
             if (MessageBox.Show($"Bạn có chắc muốn thêm nhà cung cấp?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
             {
                 try
@@ -192,44 +192,67 @@ namespace QuanLyBanHang.UI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            // creating Excel Application  
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-            // creating new WorkBook within Excel application  
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-            // creating new Excelsheet in workbook  
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-            // see the excel sheet behind the program  
-            app.Visible = true;
-            // get the reference of first sheet. By default its name is Sheet1.  
-            // store its reference to worksheet  
-            worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;
-            // changing the name of active sheet  
-            worksheet.Name = "Danh sách nhà cung cấp";
-            // storing header part in Excel  
-            for (int i = 1; i < dataProvider.Columns.Count + 1; i++)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                worksheet.Cells[1, i] = dataProvider.Columns[i - 1].HeaderText;
+                //gọi hàm ToExcel() với tham số là dtgDSHS và filename từ SaveFileDialog
+                ToExcel(dataProvider, saveFileDialog1.FileName);
             }
-            // storing Each row and column value to excel sheet  
-            for (int i = 0; i < dataProvider.Rows.Count - 1; i++)
+        }
+
+        private void ToExcel(DataGridView dataGridView1, string fileName)
+        {
+            //khai báo thư viện hỗ trợ Microsoft.Office.Interop.Excel
+            Microsoft.Office.Interop.Excel.Application excel;
+            Microsoft.Office.Interop.Excel.Workbook workbook;
+            Microsoft.Office.Interop.Excel.Worksheet worksheet;
+            try
             {
-                for (int j = 0; j < dataProvider.Columns.Count; j++)
+                //Tạo đối tượng COM.
+                excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Visible = false;
+                excel.DisplayAlerts = false;
+                //tạo mới một Workbooks bằng phương thức add()
+                workbook = excel.Workbooks.Add(Type.Missing);
+                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets["Sheet1"];
+                //đặt tên cho sheet
+                worksheet.Name = "Quản lý nhà cung cấp";
+
+                // export header trong DataGridView
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
                 {
-                    worksheet.Cells[i + 2, j + 1] = dataProvider.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
                 }
+                // export nội dung trong DataGridView
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                // sử dụng phương thức SaveAs() để lưu workbook với filename
+                workbook.SaveAs(fileName);
+                //đóng workbook
+                workbook.Close();
+                excel.Quit();
+                MessageBox.Show("Xuất dữ liệu ra Excel thành công!");
             }
-            // save the application  
-            workbook.SaveAs("D:\\nhacungcap.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            // Exit from the application  
-            app.Visible = true;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                workbook = null;
+                worksheet = null;
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Provider search = new Provider();
             search.Address = txtAddress.Text;
-            search.Name= txtName.Text;
+            search.Name = txtName.Text;
             search.Email = txtEmail.Text;
             search.PhoneNumber = txtPhone.Text;
 
@@ -243,7 +266,27 @@ namespace QuanLyBanHang.UI
                 .Replace("-", "")
                 .Replace("(", "")
                 .Replace(")", "");
-            return Regex.Match(phoneNumber, @"^\+\d{5,15}$").Success;
+            return Regex.Match(phoneNumber, "^(([0-9]|\\+)(\\d{9})|(\\d{11}))$").Success;
         }
+
+        private void dataProvider_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var rowIdx = (e.RowIndex + 1).ToString();
+
+            var centerFormat = new StringFormat()
+            {
+                // right alignment might actually make more sense for numbers
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var headerBounds = new System.Drawing.Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+        }
+
     }
 }
+
+
+    

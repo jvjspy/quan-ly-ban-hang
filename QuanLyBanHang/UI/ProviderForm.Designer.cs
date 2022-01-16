@@ -30,7 +30,7 @@ namespace QuanLyBanHang.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -49,6 +49,12 @@ namespace QuanLyBanHang.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataProvider = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -58,21 +64,15 @@ namespace QuanLyBanHang.UI
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileImg = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.dataProvider = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.palButton.SuspendLayout();
             this.palInput.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProvider)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -251,12 +251,74 @@ namespace QuanLyBanHang.UI
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Location = new System.Drawing.Point(54, 263);
+            this.groupBox1.Location = new System.Drawing.Point(61, 254);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(804, 213);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách nhà cung cấp";
+            // 
+            // dataProvider
+            // 
+            this.dataProvider.AllowUserToAddRows = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataProvider.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataProvider.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataProvider.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.NameNCC,
+            this.Address,
+            this.PhoneNumber,
+            this.Email});
+            this.dataProvider.Location = new System.Drawing.Point(8, 19);
+            this.dataProvider.Name = "dataProvider";
+            this.dataProvider.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataProvider.Size = new System.Drawing.Size(790, 150);
+            this.dataProvider.TabIndex = 1;
+            this.dataProvider.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataProvider_RowPostPaint);
+            this.dataProvider.Click += new System.EventHandler(this.selectChange);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Mã nhà cung cấp";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            this.ID.Width = 200;
+            // 
+            // NameNCC
+            // 
+            this.NameNCC.DataPropertyName = "Name";
+            this.NameNCC.HeaderText = "Tên nhà cung cấp";
+            this.NameNCC.Name = "NameNCC";
+            this.NameNCC.Width = 200;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Địa chỉ";
+            this.Address.Name = "Address";
+            this.Address.Width = 220;
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.DataPropertyName = "PhoneNumber";
+            this.PhoneNumber.HeaderText = "Số điện thoại";
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.Width = 120;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Width = 210;
             // 
             // btnClose
             // 
@@ -332,67 +394,6 @@ namespace QuanLyBanHang.UI
             // 
             this.openFileImg.FileName = "openFileDialog1";
             // 
-            // dataProvider
-            // 
-            this.dataProvider.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataProvider.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataProvider.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataProvider.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.NameNCC,
-            this.Address,
-            this.PhoneNumber,
-            this.Email});
-            this.dataProvider.Location = new System.Drawing.Point(16, 19);
-            this.dataProvider.Name = "dataProvider";
-            this.dataProvider.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataProvider.Size = new System.Drawing.Size(780, 150);
-            this.dataProvider.TabIndex = 1;
-            this.dataProvider.Click += new System.EventHandler(this.selectChange);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Mã nhà cung cấp";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            this.ID.Width = 200;
-            // 
-            // NameNCC
-            // 
-            this.NameNCC.DataPropertyName = "Name";
-            this.NameNCC.HeaderText = "Tên nhà cung cấp";
-            this.NameNCC.Name = "NameNCC";
-            this.NameNCC.Width = 200;
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Địa chỉ";
-            this.Address.Name = "Address";
-            this.Address.Width = 220;
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.DataPropertyName = "PhoneNumber";
-            this.PhoneNumber.HeaderText = "Số điện thoại";
-            this.PhoneNumber.Name = "PhoneNumber";
-            this.PhoneNumber.Width = 120;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.Width = 210;
-            // 
             // ProviderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,6 +405,7 @@ namespace QuanLyBanHang.UI
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Name = "ProviderForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProviderForm";
             this.Load += new System.EventHandler(this.ProviderForm_Load);
             this.panel1.ResumeLayout(false);
@@ -411,11 +413,11 @@ namespace QuanLyBanHang.UI
             this.palInput.ResumeLayout(false);
             this.palInput.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataProvider)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

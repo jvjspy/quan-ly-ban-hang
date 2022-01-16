@@ -186,6 +186,9 @@
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\InvoiceDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
+    <Compile Include="DAO\ProviderDAO.cs" />
+    <Compile Include="DAO\ReceiptDAO.cs" />
+    <Compile Include="DAO\ReceiptDetailDAO.cs" />
     <Compile Include="DAO\ReportDAO.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -234,6 +237,18 @@
     <Compile Include="UI\ProductImportExcelForm.Designer.cs">
       <DependentUpon>ProductImportExcelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ProviderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProviderForm.Designer.cs">
+      <DependentUpon>ProviderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProviderImportProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProviderImportProductForm.Designer.cs">
+      <DependentUpon>ProviderImportProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ProductImportExcelForm.resx">
       <DependentUpon>ProductImportExcelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProviderForm.resx">
+      <DependentUpon>ProviderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProviderImportProductForm.resx">
+      <DependentUpon>ProviderImportProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>

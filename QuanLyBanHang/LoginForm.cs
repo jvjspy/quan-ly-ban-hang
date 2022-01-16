@@ -51,5 +51,11 @@ namespace QuanLyBanHang
         {
 			Close();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+			new ProviderImportProductForm().Show();
+
+		}
     }
 }

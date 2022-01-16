@@ -14,7 +14,10 @@ namespace QuanLyBanHang.DAO
 		{
 			return db.Providers.Find(id);
 		}
-
+		public List<Provider> GetProviders()
+		{
+			return db.Providers.ToList();
+		}
 		public void AddProvider(Provider pr)
 		{
 			db.Providers.Add(pr);
@@ -48,10 +51,9 @@ namespace QuanLyBanHang.DAO
 			else
 			{
 				var list = from pr in db.Providers
-						   where pr.Name.Contains(fill.Name) && 
-							(fill.Email == pr.Email || fill.Email == "") &&
-							(fill.PhoneNumber == pr.PhoneNumber || fill.PhoneNumber == "") &&
-							(fill.Address == pr.Address || fill.Address == "")
+						   where pr.Name.Contains(fill.Name) &&
+							pr.Email.Contains(fill.Email) && pr.PhoneNumber.Contains(fill.PhoneNumber) &&
+							pr.Email.Contains(fill.Email)
 						   select pr;
 				return list.ToList();
 			}
