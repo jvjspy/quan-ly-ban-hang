@@ -97,7 +97,6 @@ namespace QuanLyBanHang.UI
             edit.BuyPrice = int.Parse(txt_buy.Text);
             edit.SellPrice = int.Parse(txt_sell.Text);
             edit.Description = txt_desc.Text;
-            edit.Amount = int.Parse(txt_amount.Text);
             edit.CatId = (long?)cblmh.SelectedValue;
             if (openFileImg.SafeFileName != "openFileDialog1")
             pictureBox1.Image.Save(openFileImg.SafeFileName, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -135,6 +134,7 @@ namespace QuanLyBanHang.UI
             var drr = dgv.CurrentRow;
             txtImg.Text = drr.Cells["Img"].Value.ToString();
             txt_amount.Text = drr.Cells["Amount"].Value.ToString();
+            txt_amount.Enabled = false;
             txt_buy.Text = drr.Cells["BuyPrice"].Value.ToString();
             txt_desc.Text = drr.Cells["Description"].Value.ToString();
             txt_name.Text = drr.Cells["NameP"].Value.ToString();
@@ -212,6 +212,7 @@ namespace QuanLyBanHang.UI
             txt_sell.Text = "";
             txt_unit.Text = "";
             pictureBox1.Image = null;
+            txt_amount.Enabled = true;
             LoadData(null);
         }
 

@@ -65,25 +65,8 @@ namespace QuanLyBanHang.DAO
 		{ 
             foreach (var item in ls)
             {
-				if(item.Id == 0)
-                {
 					item.Category = null;
 					db.Products.Add(item);
-                }
-                else
-                {
-					Product product = db.Products.FirstOrDefault(i => i.Id == item.Id);
-					product.Name = item.Name;
-					product.Description = item.Description;
-					product.CatId = item.CatId;
-					product.BuyPrice = item.BuyPrice;
-					product.SellPrice = item.SellPrice;
-					product.Amount += item.Amount;
-					if (item.Image != "")
-					{
-						product.Image = item.Image;
-					}
-				}
             }
 			db.SaveChanges();
         }
