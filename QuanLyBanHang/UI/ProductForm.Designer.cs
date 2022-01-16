@@ -469,7 +469,7 @@
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(148, 33);
             this.btnImport.TabIndex = 15;
-            this.btnImport.Text = "Thêm mới từ file";
+            this.btnImport.Text = "Nhập hàng";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 

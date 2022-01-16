@@ -42,17 +42,24 @@ namespace QuanLyBanHang.UI
                 for (int i = 3; i <= rowCount; i++)
                 {
                     Product product = new Product();
-                    Category ca = categoryDAO.GetCategoriesByName(xlRange.Cells[i, 1].Value2);
-                    product.Id = 0;
+                    Category ca = categoryDAO.GetCategoriesByName(xlRange.Cells[i, 2].Value2);
+                    if (xlRange.Cells[i, 1] != null && xlRange.Cells[i, 1].Value2 != null)
+                    {
+                        product.Id = (long)xlRange.Cells[i, 1].Value2;
+                    }
+                    else
+                    {
+                        product.Id = 0;
+                    }
                     product.Category = ca;
                     product.CatId = ca.Id;
-                    product.Name = xlRange.Cells[i, 2].Value2.ToString();
-                    product.Unit = xlRange.Cells[i, 3].Value2.ToString();
-                    product.SellPrice = (int)xlRange.Cells[i, 4].Value2;
-                    product.BuyPrice = (int)xlRange.Cells[i, 5].Value2;
-                    product.Description = xlRange.Cells[i, 6].Value2;
-                    product.Amount = (int)xlRange.Cells[i, 7].Value2;
-                    product.Image = xlRange.Cells[i, 8].Value2.ToString();
+                    product.Name = xlRange.Cells[i, 3].Value2.ToString();
+                    product.Unit = xlRange.Cells[i, 4].Value2.ToString();
+                    product.SellPrice = (int)xlRange.Cells[i, 5].Value2;
+                    product.BuyPrice = (int)xlRange.Cells[i, 6].Value2;
+                    product.Description = xlRange.Cells[i, 7].Value2;
+                    product.Amount = (int)xlRange.Cells[i, 8].Value2;
+                    product.Image = xlRange.Cells[i, 9].Value2.ToString();
                     products.Add(product);
                 }
             }
@@ -144,14 +151,14 @@ namespace QuanLyBanHang.UI
             worksheet = workbook.ActiveSheet;
             // changing the name of active sheet  
             worksheet.Name = "Danh sách";
-            worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[1, 8]].Merge();
+            worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[1, 9]].Merge();
             worksheet.Cells[1, 1] = "Danh sách sản phẩm";
             worksheet.Cells[1, 1].EntireRow.Font.Bold = true;
             worksheet.Cells[1, 1].EntireRow.Font.Size = 20;
-            worksheet.Range["A1", "H1"].Borders.LineStyle = XlLineStyle.xlContinuous;
+            worksheet.Range["A1", "I1"].Borders.LineStyle = XlLineStyle.xlContinuous;
             var list = categoryDAO.GetCategories().Select(x => x.Name).ToArray();
 
-            var cell = (Microsoft.Office.Interop.Excel.Range)worksheet.Range["A3", "A1000"];
+            var cell = (Microsoft.Office.Interop.Excel.Range)worksheet.Range["B3", "B1000"];
             cell.Validation.Delete();
             cell.Validation.Add(
                XlDVType.xlValidateList,
