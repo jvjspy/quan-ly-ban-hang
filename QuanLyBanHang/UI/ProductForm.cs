@@ -97,7 +97,6 @@ namespace QuanLyBanHang.UI
             edit.BuyPrice = int.Parse(txt_buy.Text);
             edit.SellPrice = int.Parse(txt_sell.Text);
             edit.Description = txt_desc.Text;
-            edit.Amount = int.Parse(txt_amount.Text);
             edit.CatId = (long?)cblmh.SelectedValue;
             if (openFileImg.SafeFileName != "openFileDialog1")
             pictureBox1.Image.Save(openFileImg.SafeFileName, System.Drawing.Imaging.ImageFormat.Jpeg);
