@@ -275,7 +275,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "CategoryForm";
-            this.Text = "CategoryForm";
+            this.Text = "Quản lý danh mục";
             this.Load += new System.EventHandler(this.CategoryForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

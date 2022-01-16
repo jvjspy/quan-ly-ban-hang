@@ -16,5 +16,34 @@ namespace QuanLyBanHang.DAO
             db.Receipts.Add(re);
             db.SaveChanges();
         }
+
+        public Receipt GetByID(int id)
+        {
+            return db.Receipts.FirstOrDefault(i => i.Id == id);
+        }
+
+        public void DeleteById(int id)
+        {
+            db.ReceiptDetails.RemoveRange(db.ReceiptDetails.Where(i => id == i.RecId));
+            db.Receipts.RemoveRange(db.Receipts.Where(i => id == i.Id));
+            
+            db.SaveChanges();  
+        }
+
+        public List<Receipt> GetAllBy(Receipt fill)
+        {
+            if(fill == null)
+            {
+                return db.Receipts.ToList();
+            }
+            else
+            {
+                var rs = from Receipt in db.Receipts
+                         where (fill.ProvId == Receipt.ProvId || fill.ProvId == -1)
+                         && (fill.Id == Receipt.Id || fill.Id == 0)
+                         select Receipt;
+                return rs.ToList();
+            }
+        }
     }
 }

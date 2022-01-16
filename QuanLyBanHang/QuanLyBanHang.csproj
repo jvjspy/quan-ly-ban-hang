@@ -249,6 +249,12 @@
     <Compile Include="UI\ProviderImportProductForm.Designer.cs">
       <DependentUpon>ProviderImportProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ReciptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReciptForm.Designer.cs">
+      <DependentUpon>ReciptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ProviderImportProductForm.resx">
       <DependentUpon>ProviderImportProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReciptForm.resx">
+      <DependentUpon>ReciptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>

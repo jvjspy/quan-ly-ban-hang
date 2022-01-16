@@ -30,7 +30,7 @@ namespace QuanLyBanHang.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -178,12 +178,12 @@ namespace QuanLyBanHang.UI
             this.palInput.Controls.Add(this.label1);
             this.palInput.Location = new System.Drawing.Point(11, 17);
             this.palInput.Name = "palInput";
-            this.palInput.Size = new System.Drawing.Size(560, 107);
+            this.palInput.Size = new System.Drawing.Size(583, 107);
             this.palInput.TabIndex = 5;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(366, 18);
+            this.txtPhone.Location = new System.Drawing.Point(398, 18);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(177, 20);
             this.txtPhone.TabIndex = 4;
@@ -197,7 +197,7 @@ namespace QuanLyBanHang.UI
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(366, 48);
+            this.txtEmail.Location = new System.Drawing.Point(398, 48);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(177, 20);
             this.txtEmail.TabIndex = 4;
@@ -212,7 +212,7 @@ namespace QuanLyBanHang.UI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(287, 52);
+            this.label4.Location = new System.Drawing.Point(319, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 3;
@@ -221,7 +221,7 @@ namespace QuanLyBanHang.UI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(287, 18);
+            this.label3.Location = new System.Drawing.Point(319, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 2;
@@ -253,7 +253,7 @@ namespace QuanLyBanHang.UI
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(61, 254);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(804, 213);
+            this.groupBox1.Size = new System.Drawing.Size(797, 213);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách nhà cung cấp";
@@ -261,14 +261,14 @@ namespace QuanLyBanHang.UI
             // dataProvider
             // 
             this.dataProvider.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataProvider.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataProvider.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataProvider.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataProvider.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -279,7 +279,7 @@ namespace QuanLyBanHang.UI
             this.dataProvider.Location = new System.Drawing.Point(8, 19);
             this.dataProvider.Name = "dataProvider";
             this.dataProvider.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataProvider.Size = new System.Drawing.Size(790, 150);
+            this.dataProvider.Size = new System.Drawing.Size(781, 150);
             this.dataProvider.TabIndex = 1;
             this.dataProvider.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataProvider_RowPostPaint);
             this.dataProvider.Click += new System.EventHandler(this.selectChange);
@@ -324,7 +324,7 @@ namespace QuanLyBanHang.UI
             // 
             this.btnClose.Image = global::QuanLyBanHang.Properties.Resources.close;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(675, 175);
+            this.btnClose.Location = new System.Drawing.Point(684, 175);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(97, 32);
             this.btnClose.TabIndex = 0;
@@ -336,7 +336,7 @@ namespace QuanLyBanHang.UI
             // 
             this.btnPrint.Image = global::QuanLyBanHang.Properties.Resources.printer;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(552, 175);
+            this.btnPrint.Location = new System.Drawing.Point(561, 175);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(117, 32);
             this.btnPrint.TabIndex = 0;
@@ -359,9 +359,9 @@ namespace QuanLyBanHang.UI
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.palInput);
-            this.groupBox2.Location = new System.Drawing.Point(264, 57);
+            this.groupBox2.Location = new System.Drawing.Point(256, 57);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(586, 129);
+            this.groupBox2.Size = new System.Drawing.Size(602, 129);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhà cung cấp";
@@ -371,7 +371,7 @@ namespace QuanLyBanHang.UI
             this.groupBox3.Controls.Add(this.palButton);
             this.groupBox3.Location = new System.Drawing.Point(433, 187);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(417, 67);
+            this.groupBox3.Size = new System.Drawing.Size(425, 67);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thao tác";
@@ -379,7 +379,7 @@ namespace QuanLyBanHang.UI
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.panel1);
-            this.groupBox4.Location = new System.Drawing.Point(79, 52);
+            this.groupBox4.Location = new System.Drawing.Point(61, 52);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(190, 134);
             this.groupBox4.TabIndex = 12;
@@ -398,7 +398,7 @@ namespace QuanLyBanHang.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 488);
+            this.ClientSize = new System.Drawing.Size(927, 488);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

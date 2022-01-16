@@ -11,10 +11,9 @@ namespace QuanLyBanHang.DAO
     {
         private readonly DBContext db = new DBContext();
 
-        public void AddReceiptDetail(ReceiptDetail red)
-        {
-            db.ReceiptDetails.Add(red);
-            db.SaveChanges();
+        public List<ReceiptDetail> GetAll(long id) {
+            return db.ReceiptDetails.Where(i => i.RecId == id).ToList();
         }
+
     }
 }
