@@ -472,6 +472,7 @@ namespace QuanLyBanHang.UI
 			this.btnClose.TabIndex = 1;
 			this.btnClose.Text = "Đóng";
 			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
 			// btnPrint
 			// 
@@ -503,6 +504,9 @@ namespace QuanLyBanHang.UI
 			// 
 			// sfdInvoice
 			// 
+			this.sfdInvoice.DefaultExt = "pdf";
+			this.sfdInvoice.DereferenceLinks = false;
+			this.sfdInvoice.FileName = "hoadon.pdf";
 			this.sfdInvoice.Title = "Lưu file pdf hóa đơn";
 			// 
 			// InvoiceForm

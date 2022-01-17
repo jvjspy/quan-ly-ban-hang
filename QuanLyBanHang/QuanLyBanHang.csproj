@@ -335,21 +335,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\den-suoi-nha-tam-sunhouse-shd3812-s1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\quat-dung-panasonic-f-409k.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\quat-thong-gio-gan-tran-lioa-evf24cu7.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\quat-tich-dien-mini-mocato-air-m503-4.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\printer.png" />
     <None Include="Resources\save.png" />
     <None Include="Resources\close.png" />
@@ -362,6 +347,41 @@
     <None Include="Resources\profits.png" />
     <None Include="Resources\package.png" />
     <None Include="Resources\invoice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\10027226-lo-vi-song-sharp-20l-R-g226vn-s-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\10034018-may-xay-sinh-to-sunhouse-shd5112-1_l954-d9.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\10036685-may-loc-nuoc-ro-sunhouse-10-loi-shr76210ck-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\10036991-bep-gas-sunhouse-shb204mt-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\10041706-may-loc-nuoc-kangaroo-hydrogen-kg100hc-vtu-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\10045580-noi-chien-khong-dau-ferroli-4l-faf-4-0-m-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\den-suoi-nha-tam-sunhouse-shd3812-s1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\quat-dung-panasonic-f-409k.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\quat-thong-gio-gan-tran-lioa-evf24cu7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\quat-tich-dien-mini-mocato-air-m503-4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

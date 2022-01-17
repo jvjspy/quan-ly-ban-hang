@@ -301,5 +301,10 @@ namespace QuanLyBanHang.UI
 		{
 			PrintInvoice(id.Value);
 		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }

@@ -30,14 +30,16 @@ namespace QuanLyBanHang.UI
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceListForm));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceListForm));
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.cbAllDays = new System.Windows.Forms.CheckBox();
+			this.btnRefresh = new System.Windows.Forms.Button();
+			this.btnSearch = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
 			this.dtpTo = new System.Windows.Forms.DateTimePicker();
 			this.dtpFrom = new System.Windows.Forms.DateTimePicker();
@@ -47,6 +49,10 @@ namespace QuanLyBanHang.UI
 			this.tbId = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.btnAdd = new System.Windows.Forms.Button();
+			this.btnDetails = new System.Windows.Forms.Button();
+			this.btnDel = new System.Windows.Forms.Button();
+			this.btnClose = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.dgvInvoice = new System.Windows.Forms.DataGridView();
 			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,12 +63,6 @@ namespace QuanLyBanHang.UI
 			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.error = new System.Windows.Forms.ErrorProvider(this.components);
 			this.label6 = new System.Windows.Forms.Label();
-			this.btnClose = new System.Windows.Forms.Button();
-			this.btnAdd = new System.Windows.Forms.Button();
-			this.btnDetails = new System.Windows.Forms.Button();
-			this.btnDel = new System.Windows.Forms.Button();
-			this.btnRefresh = new System.Windows.Forms.Button();
-			this.btnSearch = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -112,6 +112,31 @@ namespace QuanLyBanHang.UI
 			this.cbAllDays.Text = "Tất cả các ngày";
 			this.cbAllDays.UseVisualStyleBackColor = true;
 			this.cbAllDays.CheckedChanged += new System.EventHandler(this.cbAllDays_CheckedChanged);
+			// 
+			// btnRefresh
+			// 
+			this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+			this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnRefresh.Location = new System.Drawing.Point(402, 96);
+			this.btnRefresh.Name = "btnRefresh";
+			this.btnRefresh.Size = new System.Drawing.Size(139, 36);
+			this.btnRefresh.TabIndex = 14;
+			this.btnRefresh.Text = "Làm mới";
+			this.btnRefresh.UseVisualStyleBackColor = true;
+			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+			// 
+			// btnSearch
+			// 
+			this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+			this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnSearch.Location = new System.Drawing.Point(268, 96);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(128, 36);
+			this.btnSearch.TabIndex = 13;
+			this.btnSearch.Text = "Tìm kiếm";
+			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// label5
 			// 
@@ -189,6 +214,55 @@ namespace QuanLyBanHang.UI
 			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Thao tác";
+			// 
+			// btnAdd
+			// 
+			this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+			this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAdd.Location = new System.Drawing.Point(6, 60);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(188, 37);
+			this.btnAdd.TabIndex = 7;
+			this.btnAdd.Text = "Tạo mới hóa đơn";
+			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			// 
+			// btnDetails
+			// 
+			this.btnDetails.Image = ((System.Drawing.Image)(resources.GetObject("btnDetails.Image")));
+			this.btnDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDetails.Location = new System.Drawing.Point(6, 19);
+			this.btnDetails.Name = "btnDetails";
+			this.btnDetails.Size = new System.Drawing.Size(188, 37);
+			this.btnDetails.TabIndex = 4;
+			this.btnDetails.Text = "Chi tiết";
+			this.btnDetails.UseVisualStyleBackColor = true;
+			this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
+			// 
+			// btnDel
+			// 
+			this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+			this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDel.Location = new System.Drawing.Point(6, 101);
+			this.btnDel.Name = "btnDel";
+			this.btnDel.Size = new System.Drawing.Size(188, 37);
+			this.btnDel.TabIndex = 5;
+			this.btnDel.Text = "Xóa hóa đơn";
+			this.btnDel.UseVisualStyleBackColor = true;
+			this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+			// 
+			// btnClose
+			// 
+			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+			this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnClose.Location = new System.Drawing.Point(6, 142);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(188, 37);
+			this.btnClose.TabIndex = 6;
+			this.btnClose.Text = "Đóng";
+			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
 			// groupBox3
 			// 
@@ -297,79 +371,6 @@ namespace QuanLyBanHang.UI
 			this.label6.TabIndex = 15;
 			this.label6.Text = "Kích vào biểu tượng mũi tên ở đầu dòng để chọn một hàng hoặc nhấn giữ shift để ch" +
     "ọn nhiều";
-			// 
-			// btnClose
-			// 
-			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-			this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnClose.Location = new System.Drawing.Point(6, 142);
-			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(188, 37);
-			this.btnClose.TabIndex = 6;
-			this.btnClose.Text = "Đóng";
-			this.btnClose.UseVisualStyleBackColor = true;
-			// 
-			// btnAdd
-			// 
-			this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-			this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnAdd.Location = new System.Drawing.Point(6, 60);
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(188, 37);
-			this.btnAdd.TabIndex = 7;
-			this.btnAdd.Text = "Tạo mới hóa đơn";
-			this.btnAdd.UseVisualStyleBackColor = true;
-			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-			// 
-			// btnDetails
-			// 
-			this.btnDetails.Image = ((System.Drawing.Image)(resources.GetObject("btnDetails.Image")));
-			this.btnDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnDetails.Location = new System.Drawing.Point(6, 19);
-			this.btnDetails.Name = "btnDetails";
-			this.btnDetails.Size = new System.Drawing.Size(188, 37);
-			this.btnDetails.TabIndex = 4;
-			this.btnDetails.Text = "Chi tiết";
-			this.btnDetails.UseVisualStyleBackColor = true;
-			this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
-			// 
-			// btnDel
-			// 
-			this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-			this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnDel.Location = new System.Drawing.Point(6, 101);
-			this.btnDel.Name = "btnDel";
-			this.btnDel.Size = new System.Drawing.Size(188, 37);
-			this.btnDel.TabIndex = 5;
-			this.btnDel.Text = "Xóa hóa đơn";
-			this.btnDel.UseVisualStyleBackColor = true;
-			this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-			// 
-			// btnRefresh
-			// 
-			this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-			this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnRefresh.Location = new System.Drawing.Point(402, 96);
-			this.btnRefresh.Name = "btnRefresh";
-			this.btnRefresh.Size = new System.Drawing.Size(139, 36);
-			this.btnRefresh.TabIndex = 14;
-			this.btnRefresh.Text = "Làm mới";
-			this.btnRefresh.UseVisualStyleBackColor = true;
-			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-			// 
-			// btnSearch
-			// 
-			this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-			this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnSearch.Location = new System.Drawing.Point(268, 96);
-			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.Size = new System.Drawing.Size(128, 36);
-			this.btnSearch.TabIndex = 13;
-			this.btnSearch.Text = "Tìm kiếm";
-			this.btnSearch.UseVisualStyleBackColor = true;
-			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// InvoiceListForm
 			// 

@@ -49,6 +49,10 @@ namespace QuanLyBanHang.UI
 			this.lbInventory = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.comboYear = new System.Windows.Forms.ComboBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.comboMonth = new System.Windows.Forms.ComboBox();
+			this.label7 = new System.Windows.Forms.Label();
 			this.comboReport = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -180,7 +184,6 @@ namespace QuanLyBanHang.UI
 			this.lbInventory.TabIndex = 8;
 			this.lbInventory.Text = "500,000,000";
 			this.lbInventory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lbInventory.Click += new System.EventHandler(this.lbStock_Click);
 			// 
 			// groupBox1
 			// 
@@ -201,6 +204,10 @@ namespace QuanLyBanHang.UI
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.comboYear);
+			this.groupBox2.Controls.Add(this.label8);
+			this.groupBox2.Controls.Add(this.comboMonth);
+			this.groupBox2.Controls.Add(this.label7);
 			this.groupBox2.Controls.Add(this.comboReport);
 			this.groupBox2.Controls.Add(this.label6);
 			this.groupBox2.Controls.Add(this.chart);
@@ -211,22 +218,61 @@ namespace QuanLyBanHang.UI
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Biểu đồ";
 			// 
+			// comboYear
+			// 
+			this.comboYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboYear.FormattingEnabled = true;
+			this.comboYear.Location = new System.Drawing.Point(932, 19);
+			this.comboYear.Name = "comboYear";
+			this.comboYear.Size = new System.Drawing.Size(91, 24);
+			this.comboYear.TabIndex = 7;
+			this.comboYear.SelectedIndexChanged += new System.EventHandler(this.comboYear_SelectedIndexChanged);
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(889, 23);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(37, 17);
+			this.label8.TabIndex = 6;
+			this.label8.Text = "Năm";
+			// 
+			// comboMonth
+			// 
+			this.comboMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboMonth.FormattingEnabled = true;
+			this.comboMonth.Location = new System.Drawing.Point(823, 19);
+			this.comboMonth.Name = "comboMonth";
+			this.comboMonth.Size = new System.Drawing.Size(51, 24);
+			this.comboMonth.TabIndex = 5;
+			this.comboMonth.SelectedIndexChanged += new System.EventHandler(this.comboMonth_SelectedIndexChanged);
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(768, 23);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(49, 17);
+			this.label7.TabIndex = 4;
+			this.label7.Text = "Tháng";
+			// 
 			// comboReport
 			// 
+			this.comboReport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboReport.FormattingEnabled = true;
 			this.comboReport.Items.AddRange(new object[] {
             "Trong tháng",
             "Trong năm"});
-			this.comboReport.Location = new System.Drawing.Point(835, 17);
+			this.comboReport.Location = new System.Drawing.Point(132, 19);
 			this.comboReport.Name = "comboReport";
-			this.comboReport.Size = new System.Drawing.Size(188, 24);
+			this.comboReport.Size = new System.Drawing.Size(125, 24);
 			this.comboReport.TabIndex = 3;
 			this.comboReport.SelectedIndexChanged += new System.EventHandler(this.comboReport_SelectedIndexChanged);
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(720, 20);
+			this.label6.Location = new System.Drawing.Point(17, 23);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(100, 17);
 			this.label6.TabIndex = 2;
@@ -234,6 +280,7 @@ namespace QuanLyBanHang.UI
 			// 
 			// chart
 			// 
+			chartArea1.AxisX.Interval = 1D;
 			chartArea1.Name = "ChartArea1";
 			this.chart.ChartAreas.Add(chartArea1);
 			legend1.Name = "Legend1";
@@ -252,7 +299,7 @@ namespace QuanLyBanHang.UI
 			series2.YValueMembers = "cost";
 			series3.BorderWidth = 2;
 			series3.ChartArea = "ChartArea1";
-			series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 			series3.Legend = "Legend1";
 			series3.Name = "Lợi nhuận";
 			series3.XValueMember = "day";
@@ -273,7 +320,6 @@ namespace QuanLyBanHang.UI
 			this.groupBox3.TabIndex = 11;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Sản phẩm bán chạy";
-			this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
 			// 
 			// dgvProd
 			// 
@@ -397,5 +443,9 @@ namespace QuanLyBanHang.UI
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.ComboBox comboYear;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.ComboBox comboMonth;
+		private System.Windows.Forms.Label label7;
 	}
 }
