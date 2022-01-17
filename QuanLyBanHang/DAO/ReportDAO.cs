@@ -2,15 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QuanLyBanHang.DAO
 {
-	enum ReportBy
-	{
-		MONTH, YEAR
-	}
 	class TopProduct
 	{
 		public long Id { get; set; }
@@ -32,43 +26,40 @@ namespace QuanLyBanHang.DAO
 			var inventory = db.Products.Sum(p => p.Amount * p.BuyPrice);
 			return (invCount, profit, prodCount, inventory);
 		}
-		public (int[] revenue,int[] cost,int[] profit) GetChartReport(ReportBy by)
+		public int[] GetAvailableYears()
 		{
-			if (by == ReportBy.MONTH)
-			{
-				return GetChartReportInMonth();
-			}
-			return GetChartReportInYear();
+			var firstInvYear = db.Invoices.Select(inv => inv.InvDate).DefaultIfEmpty(DateTime.Now).Min().Year;
+			var firstRecYear = db.Receipts.Select(rec => rec.RecDate).DefaultIfEmpty(DateTime.Now).Min().Year;
+			var minYear = Math.Min(firstRecYear, firstInvYear);
+			return Enumerable.Range(minYear, DateTime.Now.Year - minYear + 1).ToArray();
 		}
-		private (int[],int[],int[]) GetChartReportInMonth()
+		public (int[], int[], int[]) GetChartReportInMonth(int month, int year)
 		{
-			var today = DateTime.Now;
-			var dayCount = DateTime.DaysInMonth(today.Year, today.Month);
-			var revenue = (from inv in db.Invoices.Include("InvoiceDetails").AsEnumerable() where inv.InvDate.Year == today.Year && inv.InvDate.Month == today.Month group inv by inv.InvDate into days select new { day = days.Key.Day, revenue = days.Sum(inv => inv.InvSum) });
+			var dayCount = DateTime.DaysInMonth(year, month);
+			var revenue = (from inv in db.Invoices.Include("InvoiceDetails").AsEnumerable() where inv.InvDate.Year == year && inv.InvDate.Month == month group inv by inv.InvDate into days select new { day = days.Key.Day, revenue = days.Sum(inv => inv.InvSum) });
 			var revenueInMonth = new int[dayCount];
 			revenue.ToList().ForEach(r =>
 			{
 				revenueInMonth[r.day - 1] = r.revenue;
 			});
-			var cost = (from rec in db.Receipts.Include("ReceiptDetails").AsEnumerable() where rec.RecDate.Year == today.Year && rec.RecDate.Month == today.Month group rec by rec.RecDate into days select new { day = days.Key.Day, cost = days.Sum(r => r.RecSum) });
+			var cost = (from rec in db.Receipts.Include("ReceiptDetails").AsEnumerable() where rec.RecDate.Year == year && rec.RecDate.Month == month group rec by rec.RecDate into days select new { day = days.Key.Day, cost = days.Sum(r => r.RecSum) });
 			var costInMonth = new int[dayCount];
 			cost.ToList().ForEach(c =>
 			{
 				costInMonth[c.day - 1] = c.cost;
 			});
-			var profitInMonth = revenueInMonth.Zip(costInMonth, (r, c) => r-c).ToArray();
+			var profitInMonth = revenueInMonth.Zip(costInMonth, (r, c) => r - c).ToArray();
 			return (revenueInMonth, costInMonth, profitInMonth);
 		}
-		private (int[], int[], int[]) GetChartReportInYear()
+		public (int[], int[], int[]) GetChartReportInYear(int year)
 		{
-			var today = DateTime.Now;
-			var revenue = (from inv in db.Invoices.Include("InvoiceDetails").AsEnumerable() where inv.InvDate.Year == today.Year group inv by inv.InvDate.Month into months select new { month = months.Key, revenue = months.Sum(inv => inv.InvSum) });
+			var revenue = (from inv in db.Invoices.Include("InvoiceDetails").AsEnumerable() where inv.InvDate.Year == year group inv by inv.InvDate.Month into months select new { month = months.Key, revenue = months.Sum(inv => inv.InvSum) });
 			var revenueInYear = new int[12];
 			revenue.ToList().ForEach(r =>
 			{
 				revenueInYear[r.month - 1] = r.revenue;
 			});
-			var cost = (from rec in db.Receipts.Include("ReceiptDetails").AsEnumerable() where rec.RecDate.Year == today.Year group rec by rec.RecDate.Month into months select new { month = months.Key, cost = months.Sum(r => r.RecSum) });
+			var cost = (from rec in db.Receipts.Include("ReceiptDetails").AsEnumerable() where rec.RecDate.Year == year group rec by rec.RecDate.Month into months select new { month = months.Key, cost = months.Sum(r => r.RecSum) });
 			var costInYear = new int[12];
 			cost.ToList().ForEach(c =>
 			{
@@ -79,7 +70,7 @@ namespace QuanLyBanHang.DAO
 		}
 		public List<TopProduct> GetTopProducts()
 		{
-			return (from p in db.Products.Include("InvoiceDetails").AsNoTracking().AsEnumerable() select new { p, count = p.InvoiceDetails.Sum(id => id.Amount) } into prods orderby prods.count descending select new TopProduct { Id=prods.p.Id,Name=prods.p.Name,Amount=prods.p.Amount,Price=prods.p.SellPrice,Count=prods.count}).Take(30).ToList();
+			return (from p in db.Products.Include("InvoiceDetails").AsNoTracking().AsEnumerable() select new { p, count = p.InvoiceDetails.Sum(id => id.Amount) } into prods orderby prods.count descending select new TopProduct { Id = prods.p.Id, Name = prods.p.Name, Amount = prods.p.Amount, Price = prods.p.SellPrice, Count = prods.count }).Take(30).ToList();
 		}
 	}
 }

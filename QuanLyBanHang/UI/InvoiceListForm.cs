@@ -138,5 +138,10 @@ namespace QuanLyBanHang.UI
 			dtpFrom.Enabled = !cbAllDays.Checked;
 			dtpTo.Enabled = !cbAllDays.Checked;
 		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }
