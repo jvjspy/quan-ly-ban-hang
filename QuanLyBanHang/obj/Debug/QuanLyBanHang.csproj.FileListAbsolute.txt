@@ -438,3 +438,4 @@ C:\Users\chung\Documents\BTLW\quan-ly-ban-hang\QuanLyBanHang\bin\Debug\images\10
 C:\Users\chung\Documents\BTLW\quan-ly-ban-hang\QuanLyBanHang\bin\Debug\images\10036991-bep-gas-sunhouse-shb204mt-1.jpg
 C:\Users\chung\Documents\BTLW\quan-ly-ban-hang\QuanLyBanHang\bin\Debug\images\10041706-may-loc-nuoc-kangaroo-hydrogen-kg100hc-vtu-1.jpg
 C:\Users\chung\Documents\BTLW\quan-ly-ban-hang\QuanLyBanHang\bin\Debug\images\10045580-noi-chien-khong-dau-ferroli-4l-faf-4-0-m-1.jpg
+C:\Users\chung\Documents\BTLW\quan-ly-ban-hang\QuanLyBanHang\bin\Debug\images\10030133-bep-hong-ngoai-sunhouse-shd6017-1.jpg
