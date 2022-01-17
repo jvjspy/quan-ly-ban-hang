@@ -2,14 +2,10 @@
 using QuanLyBanHang.Models;
 using QuanLyBanHang.Utils;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyBanHang.UI
@@ -98,7 +94,14 @@ namespace QuanLyBanHang.UI
 			{
 				var p = (libProds.SelectedItem as Product);
 				var img = p.Image;
-				pbProdImg.Image = Image.FromFile(@"images\" + img);
+				try
+				{
+					pbProdImg.Image = Image.FromFile(@"images\" + img);
+				}
+				catch
+				{
+					pbProdImg.Image = null;
+				}
 				if (p.Amount == 0)
 				{
 					lbProdAmount.Text = "Hết hàng.";
